@@ -4,12 +4,10 @@ const categorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Kategori adı zorunludur'],
-    trim: true,
-    unique: true
+    trim: true
   },
   slug: {
     type: String,
-    unique: true,
     trim: true
   },
   description: {
@@ -19,13 +17,11 @@ const categorySchema = new mongoose.Schema({
   },
   status: {
     type: Boolean,
-    default: true,
-    index: true
+    default: true
   },
   order: {
     type: Number,
-    default: 0,
-    index: true
+    default: 0
   }
 }, {
   timestamps: true,
@@ -46,9 +42,10 @@ categorySchema.pre('save', function(next) {
   next();
 });
 
-// Performans için indexler
+// Define indexes once
 categorySchema.index({ name: 1 }, { unique: true });
 categorySchema.index({ slug: 1 }, { unique: true });
+categorySchema.index({ status: 1 });
 categorySchema.index({ order: 1, name: 1 });
 
 const Category = mongoose.models?.Category || mongoose.model('Category', categorySchema);
