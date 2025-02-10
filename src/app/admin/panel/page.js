@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FiPlus, FiEdit2, FiTrash2 } from 'react-icons/fi';
@@ -6,6 +7,8 @@ import TasksPanel from '@/components/admin/panels/TasksPanel';
 import ShopPanel from '@/components/admin/panels/ShopPanel';
 import LevelsPanel from '@/components/admin/panels/LevelsPanel';
 import AchievementsPanel from '@/components/admin/panels/AchievementsPanel';
+
+export const dynamic = 'force-dynamic';
 
 const AdminPanel = () => {
   const router = useRouter();
